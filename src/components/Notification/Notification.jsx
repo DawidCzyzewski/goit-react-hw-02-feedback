@@ -1,3 +1,8 @@
-{
-  /* <Notification message="There is no feedback"></Notification>; */
+import { Component } from 'react';
+
+export class Notification extends Component {
+  render() {
+    const { message } = this.props;
+    return <p>{message}</p>;
+  }
 }

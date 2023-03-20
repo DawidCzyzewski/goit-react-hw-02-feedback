@@ -1,6 +1,10 @@
 // Import necessary elements
 import PropTypes from 'prop-types';
 import { Component } from 'react';
+import { Section } from './Section/Section';
+import { Statistics } from './Statistics/Statistics';
+import { FeedbackOptions } from './FeedbackOptions/FeedbackOptions';
+import { Notification } from './Notification/Notification';
 
 export class App extends Component {
   static defaultProps = {
@@ -18,10 +22,61 @@ export class App extends Component {
     bad: this.props.defaultProp,
   };
 
-  // countTotalFeedback = () => {};
-  // countPositiveFeedbackPercentage = () => {};
+  // Function to count all feedbacks
+  countTotalFeedback = () => {
+    const { good, neutral, bad } = this.state;
+    return good + neutral + bad;
+  };
+
+  // Function to count percentage of possitive feedbacks
+  countPositiveFeedbackPercentage = () => {
+    const { good } = this.state;
+    const percentageOfGoodFeeds = Math.round(
+      (100 * good) / this.countTotalFeedback()
+    );
+    // console.log(percentageOfGoodFeeds);
+    return percentageOfGoodFeeds === 0 ? 0 : percentageOfGoodFeeds;
+  };
+
+  // Function to handle clicked button
+  handleClick = option => {
+    // console.log(option);
+    this.setState(state => {
+      return { [option]: state[option] + 1 };
+    });
+    this.countTotalFeedback();
+  };
 
   render() {
-    return <div>working</div>;
+    const { good, bad, neutral, total, options } = this.state;
+
+    // console.log(this.countTotalFeedback());
+    return (
+      <div>
+        <Section title="Your opinion about us is important! How did you spend time?">
+          <FeedbackOptions
+            options={Object.keys(this.state)}
+            onLeaveFeedback={this.handleClick}
+          />
+        </Section>
+        <Section title="Our statistics:">
+          {this.countTotalFeedback() > 0 ? (
+            <Statistics
+              options={this.state}
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={this.countTotalFeedback()}
+              positiveFeedback={this.countPositiveFeedbackPercentage()}
+            />
+          ) : (
+            (console.log('Problemito'),
+            (<Notification message="There is no feedback" />))
+          )}
+        </Section>
+      </div>
+    );
   }
 }
+
+export default App;
