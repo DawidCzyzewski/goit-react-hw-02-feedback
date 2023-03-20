@@ -21,11 +21,11 @@ export class Statistics extends Component {
           <div>{console.log(option.keys())} </div>
         ))} */}
 
-        <div>{positiveFeedback}%</div>
-        <div>Good: {good}</div>
-        <div>Neutral: {neutral}</div>
-        <div>Bad: {bad}</div>
-        <div>Total: {total}</div>
+        <div>Good feedbacks: {positiveFeedback}%</div>
+        <div>Ammount of good: {good}</div>
+        <div>Ammount of neutral: {neutral}</div>
+        <div>Ammount of bad: {bad}</div>
+        <div>Total feedbacks: {total}</div>
       </>
     );
   }
