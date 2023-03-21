@@ -1,10 +1,9 @@
-import { arrayOf } from 'prop-types';
 import { Component } from 'react';
 
 export class Statistics extends Component {
   render() {
     // console.log(this.props);
-    const { good, neutral, bad, total, positiveFeedback, options } = this.props;
+    const { good, neutral, bad, total, positiveFeedback } = this.props;
     // console.log(this.props);
     // const object = this.props;
     // console.log(options);

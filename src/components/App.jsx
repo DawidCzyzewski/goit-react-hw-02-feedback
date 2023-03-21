@@ -48,7 +48,7 @@ export class App extends Component {
   };
 
   render() {
-    const { good, bad, neutral, total, options } = this.state;
+    const { good, bad, neutral } = this.state;
 
     // console.log(this.countTotalFeedback());
     return (
