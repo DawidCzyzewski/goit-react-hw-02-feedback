@@ -1,6 +1,10 @@
 import { Component } from 'react';
 
 export class FeedbackOptions extends Component {
+  static propTypes = {
+    onLeaveFeedback: propTypes.function,
+    options: propTypes.object,
+  };
   render() {
     const { onLeaveFeedback, options } = this.props;
     return (

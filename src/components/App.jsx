@@ -14,7 +14,6 @@ export class App extends Component {
   static defaultProps = {
     defaultProp: 0,
   };
-
   static propTypes = {
     title: PropTypes.string,
     defaultProp: PropTypes.number,

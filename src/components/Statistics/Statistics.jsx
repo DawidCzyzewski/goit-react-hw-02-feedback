@@ -1,6 +1,15 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export class Statistics extends Component {
+  static propTypes = {
+    good: PropTypes.number,
+    neutral: PropTypes.number,
+    bad: PropTypes.number,
+    total: PropTypes.number,
+    positiveFeedback: PropTypes.number,
+  };
+
   render() {
     const { good, neutral, bad, total, positiveFeedback } = this.props;
 
